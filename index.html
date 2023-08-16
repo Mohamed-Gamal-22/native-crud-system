@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap.min.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="container py-5">
+      <label for="myName" class="mb-2">name</label>
+      <input type="text" id="myName" class="form-control mb-4" />
+      <div class="invalid-feedback my-2 d-none" id="validNameAlert">
+        the name should be at least 3 character
+      </div>
+
+      <label for="myPrice" class="mb-2">price</label>
+      <input type="number" id="myPrice" class="form-control mb-4" />
+      <div class="invalid-feedback my-2 d-none" id="validPriceAlert">
+        the price should be between 1LE and 99999LE
+      </div>
+
+      <label for="myCategory" class="mb-2">category</label>
+      <input type="text" id="myCategory" class="form-control mb-4" />
+
+      <label for="myDescription" class="mb-2">description</label>
+      <input type="text" id="myDescription" class="form-control mb-4" />
+
+      <button
+        class="btn btn-primary p-3 d-flex"
+        id="myButton"
+        onclick="addProduct()"
+      >
+        add product
+      </button>
+      <button
+        class="btn btn-success p-3 d-none"
+        id="update"
+        onclick="updateProduct()"
+        
+      >
+        update product
+      </button>
+
+      <input
+        type="search"
+        class="form-control mt-4 w-75 mx-auto border-3"
+        placeholder="search"
+        id="searchInput"
+      />
+
+      <table class="table text-center border my-5 table-striped">
+        <thead>
+          <th>name</th>
+          <th>price</th>
+          <th>category</th>
+          <th>description</th>
+          <th>update</th>
+          <th>remove</th>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
