@@ -15,9 +15,9 @@ configureStore();
 function addProduct() {
   if (validName() && validPrice()) {
     let product = {
-      name: nameInput.value,
-      price: priceInput.value,
-      category: categoryInput.value,
+      name: nameInput.value.toLowerCase(),
+      price: priceInput.value.toLowerCase(),
+      category: categoryInput.value.toLowerCase(),
     };
 
     allProducts.push(product);
@@ -81,9 +81,9 @@ function configurUpdate(index) {
 function updateProduct() {
   if (validName() && validPrice()) {
     let product = {
-      name: nameInput.value,
-      price: priceInput.value,
-      category: categoryInput.value,
+      name: nameInput.value.toLowerCase(),
+      price: priceInput.value.toLowerCase(),
+      category: categoryInput.value.toLowerCase(),
     };
     allProducts.splice(indexOfeditableProduct, 1, product);
     localStorage.setItem("products", JSON.stringify(allProducts));
