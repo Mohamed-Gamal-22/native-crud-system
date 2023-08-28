@@ -1,14 +1,12 @@
 let nameInput = document.querySelector("#myName");
 let priceInput = document.querySelector("#myPrice");
 let categoryInput = document.querySelector("#myCategory");
-let descriptionInput = document.querySelector("#myDescription");
 let searchInput = document.querySelector("#searchInput");
 let tableBody = document.querySelector("#tableBody");
 let addBtn = document.querySelector("#myButton");
 let updateBtn = document.querySelector("#update");
 let validNameAlert = document.querySelector("#validNameAlert");
 let validPriceAlert = document.querySelector("#validPriceAlert");
-
 let allProducts;
 
 configureStore();
@@ -20,11 +18,12 @@ function addProduct() {
       name: nameInput.value,
       price: priceInput.value,
       category: categoryInput.value,
-      desc: descriptionInput.value,
     };
 
     allProducts.push(product);
     localStorage.setItem("products", JSON.stringify(allProducts));
+    // Display a basic alert
+    alert("product added successfully");
     display();
     clear();
   }
@@ -39,7 +38,6 @@ function display() {
         <th>${product.name}</th>
         <th>${product.price}</th>
         <th>${product.category}</th>
-        <th>${product.desc}</th>
         <th><div class="btn btn-warning" onclick="configurUpdate(${index})">update</div></th>
         <th><div class="btn btn-danger" onclick="deleteProduct(${index})">delete</div></th>
       </tr>`;
@@ -52,6 +50,7 @@ function display() {
 function deleteProduct(index) {
   allProducts.splice(index, 1);
   localStorage.setItem("products", JSON.stringify(allProducts));
+  alert("product removed successfully")
   display();
 }
 
@@ -70,7 +69,6 @@ function configurUpdate(index) {
   nameInput.value = allProducts[index].name;
   priceInput.value = allProducts[index].price;
   categoryInput.value = allProducts[index].category;
-  descriptionInput.value = allProducts[index].desc;
 
   indexOfeditableProduct = index;
 }
@@ -86,10 +84,10 @@ function updateProduct() {
       name: nameInput.value,
       price: priceInput.value,
       category: categoryInput.value,
-      desc: descriptionInput.value,
     };
     allProducts.splice(indexOfeditableProduct, 1, product);
     localStorage.setItem("products", JSON.stringify(allProducts));
+    alert("product updated successfully")
     display();
     clear();
 
@@ -118,7 +116,6 @@ searchInput.addEventListener("keyup", function () {
               this.value,
               `<span class="text-danger">${this.value}</span>`
             )}</th>
-            <th>${product.desc}</th>
             <th><div class="btn btn-warning">update</div></th>
             <th><div class="btn btn-danger" onclick="deleteProduct(${index})">delete</div></th>
           </tr>`;
@@ -144,13 +141,12 @@ function clear() {
   nameInput.value = "";
   priceInput.value = "";
   categoryInput.value = "";
-  descriptionInput.value = "";
 }
 
 // validation name
 nameInput.addEventListener("blur", validName);
 function validName() {
-  var regexName = /^[a-zA-Z]{3,}$/;
+  var regexName = /^[a-zA-Z]{2,}$/;
   if (regexName.test(nameInput.value) == true) {
     nameInput.classList.add("is-valid");
     nameInput.classList.remove("is-invalid");
