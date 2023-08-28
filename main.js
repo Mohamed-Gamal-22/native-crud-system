@@ -108,8 +108,8 @@ searchInput.addEventListener("keyup", function () {
     ) {
       cartona += `<tr>
             <th>${product.name.replace(
-              this.value,
-              `<span class="text-danger">${this.value}</span>`
+              this.value.toLowerCase(),
+              `<span class="text-danger">${this.value.toLowerCase()}</span>`
             )}</th>
             <th>${product.price}</th>
             <th>${product.category.replace(
